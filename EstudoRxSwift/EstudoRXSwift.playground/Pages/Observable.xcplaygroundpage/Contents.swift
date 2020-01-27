@@ -144,7 +144,7 @@ example(of: "deferred") {
         if flip {
             return Observable.of(1, 2, 3)
         } else {
-            return Observable.of(4, 5,6)
+            return Observable.of(4, 5, 6)
         }
     }
     

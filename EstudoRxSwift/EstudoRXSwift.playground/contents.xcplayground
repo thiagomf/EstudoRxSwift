@@ -3,5 +3,6 @@
     <pages>
         <page name='Observable'/>
         <page name='Subjects'/>
+        <page name='Filters'/>
     </pages>
 </playground>

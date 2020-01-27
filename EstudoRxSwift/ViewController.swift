@@ -7,14 +7,33 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var stringLb: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
-
+    @IBAction func clickIr(_ sender: Any) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController2") as! ViewController2
+        
+        newViewController.selectedPhotos.subscribe(onNext: { [weak self] name in
+            self?.stringLb.text = "LB ==> \(name)"
+            print("Deu next")
+        },
+        onDisposed: {
+            print("Deu dispose")
+        }).disposed(by: newViewController.dispose)
+        
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
 }
 

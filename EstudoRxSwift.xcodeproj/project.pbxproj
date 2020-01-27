@@ -14,6 +14,7 @@
 		8676F7A623DE1DDB00E3DBB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8676F7A423DE1DDB00E3DBB6 /* Main.storyboard */; };
 		8676F7A823DE1DDD00E3DBB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8676F7A723DE1DDD00E3DBB6 /* Assets.xcassets */; };
 		8676F7AB23DE1DDD00E3DBB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8676F7A923DE1DDD00E3DBB6 /* LaunchScreen.storyboard */; };
+		A54B737F23DF120700EAE36A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54B737E23DF120700EAE36A /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		8676F7AA23DE1DDD00E3DBB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8676F7AC23DE1DDD00E3DBB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88D4B4B5D53BC5BA74CE52D1 /* Pods-EstudoRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstudoRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		A54B737E23DF120700EAE36A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				8676F7A923DE1DDD00E3DBB6 /* LaunchScreen.storyboard */,
 				8676F7AC23DE1DDD00E3DBB6 /* Info.plist */,
 				863713EB23DE3963003786D8 /* EstudoRXSwift.playground */,
+				A54B737E23DF120700EAE36A /* ViewController2.swift */,
 			);
 			path = EstudoRxSwift;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8676F7A323DE1DDB00E3DBB6 /* ViewController.swift in Sources */,
+				A54B737F23DF120700EAE36A /* ViewController2.swift in Sources */,
 				8676F79F23DE1DDB00E3DBB6 /* AppDelegate.swift in Sources */,
 				8676F7A123DE1DDB00E3DBB6 /* SceneDelegate.swift in Sources */,
 			);
