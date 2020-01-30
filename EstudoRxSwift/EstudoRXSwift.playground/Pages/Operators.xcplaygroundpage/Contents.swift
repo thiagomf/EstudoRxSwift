@@ -44,29 +44,29 @@ example(of: "mapWithIndex") {
     .disposed(by: dispose)
 }
 
-struct Student {
-    
-    var score: Variable<Int>
-}
 
-example(of: "flapMap") {
+
+example(of: "flatMap") {
     
-    let dispose = DisposeBag()
+    struct Student {
+      var score: Variable<Int>
+    }
     
+    let disposeBag = DisposeBag()
+
     let ryan = Student(score: Variable(80))
     
     let charlotte = Student(score: Variable(90))
     
     let student = PublishSubject<Student>()
     
-    student.asObservable()
-    .flapMap {
+    student.asObservable() .flatMap {
         $0.score.asObservable()
     }
     .subscribe(onNext: {
         print($0)
     })
-    .disposed(by: dispose)
+        .disposed(by: disposeBag)
     
     student.onNext(ryan)
 }
