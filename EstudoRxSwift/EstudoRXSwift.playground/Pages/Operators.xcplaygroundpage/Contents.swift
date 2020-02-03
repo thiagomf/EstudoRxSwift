@@ -60,13 +60,53 @@ example(of: "flatMap") {
     
     let student = PublishSubject<Student>()
     
-    student.asObservable() .flatMap {
+    student.asObservable().flatMap {
         $0.score.asObservable()
     }
     .subscribe(onNext: {
         print($0)
     })
-        .disposed(by: disposeBag)
+    .disposed(by: disposeBag)
     
     student.onNext(ryan)
+    
+    ryan.score.value = 85
+    
+    student.onNext(charlotte)
+    
+    student.onNext(ryan)
+}
+
+example(of: "flapMapLatest") {
+    
+    struct Student {
+      var score: Variable<Int>
+    }
+    
+    let disposeBag = DisposeBag()
+
+    let ryan = Student(score: Variable(80))
+    
+    let charlotte = Student(score: Variable(90))
+    
+    let student = PublishSubject<Student>()
+    
+    student.asObservable().flatMapLatest {
+        $0.score.asObservable()
+    }
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: disposeBag)
+    
+    student.onNext(ryan)
+    
+    ryan.score.value = 10
+    
+    student.onNext(charlotte)
+    
+    charlotte.score.value = 20
+    
+    ryan.score.value = 50
+    
 }
