@@ -9,7 +9,6 @@ example(of: "startWith") {
         .subscribe(onNext: {
         print($0)
     })
-    
 }
 
 example(of: "Concat") {
@@ -22,7 +21,6 @@ example(of: "Concat") {
         .subscribe(onNext: {
             print($0)
         })
-    
 }
 
 example(of: "Concat 2") {
@@ -35,10 +33,6 @@ example(of: "Concat 2") {
     observable.subscribe(onNext: {
         print($0)
     })
-}
-
-example(of: "") {
-    
 }
 
 example(of: "Just") {
@@ -137,24 +131,87 @@ example(of: "zip") {
     let observable = Observable.zip(left, right) { weather, city in
         return "It's \(weather) in \(city)"
     }
+    
     observable.subscribe(onNext: {
         print($0)
     })
 }
 
 example(of: "withLatestFrom") {
-    // 1
+ 
     let button = PublishSubject<Void>()
     let textField = PublishSubject<String>()
-    // 2
+   
     let observable = button.withLatestFrom(textField)
     let disposable = observable.subscribe(onNext: { value in
         print(value)
     })
+    
     // 3
     textField.onNext("Par")
     textField.onNext("Pari")
     textField.onNext("Paris")
-    button.onNext()
-    button.onNext()
+//    Não funciona o onNext
+//    button.onNext()
+//    button.onNext()
+}
+
+example(of: "amb") {
+    
+    let left = PublishSubject<String>()
+    let right = PublishSubject<String>()
+    
+    let observe = left.amb(right)
+    
+    let diposable = observe.subscribe(onNext: {
+        print($0)
+    })
+    
+    left.onNext("Lisbon")
+    right.onNext("Copenhagen")
+    left.onNext("London")
+    left.onNext("Madrid")
+    right.onNext("Vienna")
+    
+    diposable.dispose()
+}
+
+example(of: "switchedLast") {
+    
+    let one = PublishSubject<String>()
+    let two = PublishSubject<String>()
+    let three = PublishSubject<String>()
+    
+    let source = PublishSubject<Observable<String>>()
+    
+    let observe = source.switchLatest()
+    
+    let disposable = observe.subscribe(onNext: {
+        print($0)
+    })
+    
+    source.onNext(one)
+    
+    one.onNext("Teste One")
+    two.onNext("Teste Two")
+    
+    source.onNext(two)
+    
+    one.onNext("Teste One 2")
+    two.onNext("Teste Two 2")
+    
+    disposable.dispose()
+}
+
+example(of: "reduce") {
+    
+    let source = Observable.of(1,2,3,4)
+    
+    let observable = source.reduce(10, accumulator: { summary, newValue in
+        return summary * newValue
+    })
+    
+    observable.subscribe(onNext: {
+        print($0)
+    })
 }

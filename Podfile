@@ -9,6 +9,4 @@ target 'EstudoRxSwift' do
   
   pod 'RxSwift'
   pod 'RxCocoa'
-
-
 end
