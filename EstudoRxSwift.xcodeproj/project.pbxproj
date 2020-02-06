@@ -14,6 +14,11 @@
 		8676F7A623DE1DDB00E3DBB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8676F7A423DE1DDB00E3DBB6 /* Main.storyboard */; };
 		8676F7A823DE1DDD00E3DBB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8676F7A723DE1DDD00E3DBB6 /* Assets.xcassets */; };
 		8676F7AB23DE1DDD00E3DBB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8676F7A923DE1DDD00E3DBB6 /* LaunchScreen.storyboard */; };
+		86B865AA23EC6D61008E7720 /* NasaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B865A923EC6D61008E7720 /* NasaViewController.swift */; };
+		86B865AD23EC6DFF008E7720 /* EONET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B865AC23EC6DFF008E7720 /* EONET.swift */; };
+		86B865AF23EC75F5008E7720 /* EOCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B865AE23EC75F5008E7720 /* EOCategory.swift */; };
+		86B865B123EC762B008E7720 /* EOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B865B023EC762B008E7720 /* EOEvent.swift */; };
+		86B865B323EC7654008E7720 /* EOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B865B223EC7654008E7720 /* EOLocation.swift */; };
 		A54B737F23DF120700EAE36A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54B737E23DF120700EAE36A /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +34,11 @@
 		8676F7A723DE1DDD00E3DBB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8676F7AA23DE1DDD00E3DBB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8676F7AC23DE1DDD00E3DBB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86B865A923EC6D61008E7720 /* NasaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewController.swift; sourceTree = "<group>"; };
+		86B865AC23EC6DFF008E7720 /* EONET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EONET.swift; sourceTree = "<group>"; };
+		86B865AE23EC75F5008E7720 /* EOCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOCategory.swift; sourceTree = "<group>"; };
+		86B865B023EC762B008E7720 /* EOEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOEvent.swift; sourceTree = "<group>"; };
+		86B865B223EC7654008E7720 /* EOLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOLocation.swift; sourceTree = "<group>"; };
 		88D4B4B5D53BC5BA74CE52D1 /* Pods-EstudoRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstudoRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		A54B737E23DF120700EAE36A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +76,7 @@
 		8676F79D23DE1DDB00E3DBB6 /* EstudoRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				86B865AB23EC6DB9008E7720 /* Cap10 */,
 				8676F79E23DE1DDB00E3DBB6 /* AppDelegate.swift */,
 				8676F7A023DE1DDB00E3DBB6 /* SceneDelegate.swift */,
 				8676F7A223DE1DDB00E3DBB6 /* ViewController.swift */,
@@ -77,6 +88,18 @@
 				A54B737E23DF120700EAE36A /* ViewController2.swift */,
 			);
 			path = EstudoRxSwift;
+			sourceTree = "<group>";
+		};
+		86B865AB23EC6DB9008E7720 /* Cap10 */ = {
+			isa = PBXGroup;
+			children = (
+				86B865A923EC6D61008E7720 /* NasaViewController.swift */,
+				86B865AC23EC6DFF008E7720 /* EONET.swift */,
+				86B865AE23EC75F5008E7720 /* EOCategory.swift */,
+				86B865B023EC762B008E7720 /* EOEvent.swift */,
+				86B865B223EC7654008E7720 /* EOLocation.swift */,
+			);
+			path = Cap10;
 			sourceTree = "<group>";
 		};
 		AE2DB48CC5BA83F9D544B849 /* Frameworks */ = {
@@ -211,10 +234,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B865AF23EC75F5008E7720 /* EOCategory.swift in Sources */,
 				8676F7A323DE1DDB00E3DBB6 /* ViewController.swift in Sources */,
+				86B865AA23EC6D61008E7720 /* NasaViewController.swift in Sources */,
 				A54B737F23DF120700EAE36A /* ViewController2.swift in Sources */,
+				86B865AD23EC6DFF008E7720 /* EONET.swift in Sources */,
 				8676F79F23DE1DDB00E3DBB6 /* AppDelegate.swift in Sources */,
+				86B865B123EC762B008E7720 /* EOEvent.swift in Sources */,
 				8676F7A123DE1DDB00E3DBB6 /* SceneDelegate.swift in Sources */,
+				86B865B323EC7654008E7720 /* EOLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A62T4XMM89;
 				INFOPLIST_FILE = EstudoRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -378,6 +407,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A62T4XMM89;
 				INFOPLIST_FILE = EstudoRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
