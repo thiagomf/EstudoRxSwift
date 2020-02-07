@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Am4-KI-5ju">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Am4-KI-5ju">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -152,10 +152,67 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="gfJ-Tp-mHw"/>
+                    <connections>
+                        <segue destination="Wg0-e9-IRA" kind="show" id="gkH-vs-GVO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6s-UB-6vu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046" y="782"/>
+            <point key="canvasLocation" x="990" y="773"/>
+        </scene>
+        <!--Events View Controller-->
+        <scene sceneID="cc2-RW-IhM">
+            <objects>
+                <viewController storyboardIdentifier="events" id="Wg0-e9-IRA" customClass="EventsViewController" customModule="EstudoRxSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rFk-co-d9l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8if-Yd-5jG">
+                                <rect key="frame" x="20" y="118" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="360" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="Dwq-V7-rqw">
+                                <rect key="frame" x="113" y="113.5" width="283" height="31"/>
+                                <connections>
+                                    <action selector="slide:" destination="Wg0-e9-IRA" eventType="valueChanged" id="0s3-WP-Djx"/>
+                                </connections>
+                            </slider>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iwm-Y3-m8g">
+                                <rect key="frame" x="0.0" y="154" width="414" height="708"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wg0-e9-IRA" id="7Mo-hR-g0a"/>
+                                    <outlet property="delegate" destination="Wg0-e9-IRA" id="7IV-Z2-YeQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iwm-Y3-m8g" firstAttribute="leading" secondItem="DJo-0a-Vc8" secondAttribute="leading" id="2jL-Qk-j4z"/>
+                            <constraint firstItem="DJo-0a-Vc8" firstAttribute="trailing" secondItem="Dwq-V7-rqw" secondAttribute="trailing" constant="20" id="FVt-IY-9eg"/>
+                            <constraint firstItem="DJo-0a-Vc8" firstAttribute="trailing" secondItem="iwm-Y3-m8g" secondAttribute="trailing" id="KI1-c1-Vlf"/>
+                            <constraint firstItem="Dwq-V7-rqw" firstAttribute="centerY" secondItem="8if-Yd-5jG" secondAttribute="centerY" id="Sw4-Ka-oa0"/>
+                            <constraint firstItem="8if-Yd-5jG" firstAttribute="leading" secondItem="DJo-0a-Vc8" secondAttribute="leading" constant="20" id="f1z-yM-uxi"/>
+                            <constraint firstItem="Dwq-V7-rqw" firstAttribute="leading" secondItem="8if-Yd-5jG" secondAttribute="trailing" constant="20" id="gNF-1b-92C"/>
+                            <constraint firstItem="iwm-Y3-m8g" firstAttribute="top" secondItem="8if-Yd-5jG" secondAttribute="bottom" constant="15" id="mMf-Y9-ZI8"/>
+                            <constraint firstItem="8if-Yd-5jG" firstAttribute="top" secondItem="DJo-0a-Vc8" secondAttribute="top" constant="30" id="rej-qt-Az1"/>
+                            <constraint firstItem="DJo-0a-Vc8" firstAttribute="bottom" secondItem="iwm-Y3-m8g" secondAttribute="bottom" id="tuC-Wd-Jr6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DJo-0a-Vc8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z9N-NV-lYV"/>
+                    <connections>
+                        <outlet property="daysLb" destination="8if-Yd-5jG" id="s58-XS-kXQ"/>
+                        <outlet property="eventstb" destination="iwm-Y3-m8g" id="nmp-B8-37F"/>
+                        <outlet property="slider" destination="Dwq-V7-rqw" id="CRA-fx-xjf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZm-Cn-usT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1879.7101449275365" y="772.76785714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hHn-6b-ld3">

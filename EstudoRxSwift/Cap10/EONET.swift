@@ -69,25 +69,25 @@ class EONET {
         }
     }
     
-    fileprivate static func events(forLast days: Int, closed: Bool) -> Observable<[EOEvent]> {
+    fileprivate static func events(forLast days: Int, closed: Bool, endPoint: String) -> Observable<[EOEvent]> {
         
-        return request(endPoint: eventsEndpoint, query: [
+        return request(endPoint: endPoint, query: [
             "days": NSNumber(value: days),
             "status": (closed ? "closed" : "open")
         ])
             .map { json in
                 guard let raw = json["events"] as? [[String: Any]] else {
-                    throw EOError.invalidJSON(eventsEndpoint)
+                    throw EOError.invalidJSON(endPoint)
                 }
                 
                 return raw.compactMap(EOEvent.init)
         }
     }
     
-    static func events(forLast days: Int = 360) -> Observable<[EOEvent]> {
+    static func events(forLast days: Int = 360, category: EOCategory) -> Observable<[EOEvent]> {
         
-        let openEvents = events(forLast: days, closed: false)
-        let closedEvents = events(forLast: days, closed: true)
+        let openEvents = events(forLast: days, closed: false, endPoint: category.endpoint)
+        let closedEvents = events(forLast: days, closed: true, endPoint: category.endpoint)
         
         return Observable.of(openEvents, closedEvents)
             .merge()
@@ -102,6 +102,15 @@ class EONET {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         return formatter
     }()
+    
+    static func filteredEvents(events: [EOEvent], forCategory category: EOCategory) -> [EOEvent] {
+        
+        return events.filter { event in
+            return event.categories
+                .contains(category.id) && !category.events.contains { $0.id == event.id }
+        }
+        .sorted(by: EOEvent.compareDates)
+    }
     
 }
 
