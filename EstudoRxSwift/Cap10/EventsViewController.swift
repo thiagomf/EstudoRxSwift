@@ -70,6 +70,7 @@ class EventsViewController: UIViewController {
 extension EventsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return filtered.value.count
     }
 

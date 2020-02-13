@@ -20,6 +20,9 @@
 		86B865B123EC762B008E7720 /* EOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B865B023EC762B008E7720 /* EOEvent.swift */; };
 		86B865B323EC7654008E7720 /* EOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B865B223EC7654008E7720 /* EOLocation.swift */; };
 		A54B737F23DF120700EAE36A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54B737E23DF120700EAE36A /* ViewController2.swift */; };
+		A5533C2E23F1EAEE00DEBFD4 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5533C2D23F1EAEE00DEBFD4 /* WeatherViewController.swift */; };
+		A57F784723F48C2A0038281E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57F784623F48C2A0038281E /* Weather.swift */; };
+		A57F784923F48D380038281E /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57F784823F48D380038281E /* ApiController.swift */; };
 		A596262223EDA9E800FD543F /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596262123EDA9E800FD543F /* EventsViewController.swift */; };
 		A596262523EDADC100FD543F /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596262323EDADC100FD543F /* EventCell.swift */; };
 		A596262623EDADC100FD543F /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596262423EDADC100FD543F /* EventCell.xib */; };
@@ -44,6 +47,9 @@
 		86B865B223EC7654008E7720 /* EOLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOLocation.swift; sourceTree = "<group>"; };
 		88D4B4B5D53BC5BA74CE52D1 /* Pods-EstudoRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstudoRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		A54B737E23DF120700EAE36A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		A5533C2D23F1EAEE00DEBFD4 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		A57F784623F48C2A0038281E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		A57F784823F48D380038281E /* ApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
 		A596262123EDA9E800FD543F /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		A596262323EDADC100FD543F /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		A596262423EDADC100FD543F /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 		8676F79D23DE1DDB00E3DBB6 /* EstudoRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				A5533C2C23F1EAD000DEBFD4 /* Cap11 */,
 				86B865AB23EC6DB9008E7720 /* Cap10 */,
 				8676F79E23DE1DDB00E3DBB6 /* AppDelegate.swift */,
 				8676F7A023DE1DDB00E3DBB6 /* SceneDelegate.swift */,
@@ -109,6 +116,16 @@
 				A596262423EDADC100FD543F /* EventCell.xib */,
 			);
 			path = Cap10;
+			sourceTree = "<group>";
+		};
+		A5533C2C23F1EAD000DEBFD4 /* Cap11 */ = {
+			isa = PBXGroup;
+			children = (
+				A5533C2D23F1EAEE00DEBFD4 /* WeatherViewController.swift */,
+				A57F784623F48C2A0038281E /* Weather.swift */,
+				A57F784823F48D380038281E /* ApiController.swift */,
+			);
+			path = Cap11;
 			sourceTree = "<group>";
 		};
 		AE2DB48CC5BA83F9D544B849 /* Frameworks */ = {
@@ -245,12 +262,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B865AF23EC75F5008E7720 /* EOCategory.swift in Sources */,
+				A5533C2E23F1EAEE00DEBFD4 /* WeatherViewController.swift in Sources */,
+				A57F784923F48D380038281E /* ApiController.swift in Sources */,
 				8676F7A323DE1DDB00E3DBB6 /* ViewController.swift in Sources */,
 				86B865AA23EC6D61008E7720 /* NasaViewController.swift in Sources */,
 				A54B737F23DF120700EAE36A /* ViewController2.swift in Sources */,
 				86B865AD23EC6DFF008E7720 /* EONET.swift in Sources */,
 				8676F79F23DE1DDB00E3DBB6 /* AppDelegate.swift in Sources */,
 				A596262523EDADC100FD543F /* EventCell.swift in Sources */,
+				A57F784723F48C2A0038281E /* Weather.swift in Sources */,
 				86B865B123EC762B008E7720 /* EOEvent.swift in Sources */,
 				8676F7A123DE1DDB00E3DBB6 /* SceneDelegate.swift in Sources */,
 				86B865B323EC7654008E7720 /* EOLocation.swift in Sources */,

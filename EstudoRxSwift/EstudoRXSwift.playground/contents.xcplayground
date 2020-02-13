@@ -3,5 +3,9 @@
     <pages>
         <page name='Observable'/>
         <page name='Subjects'/>
+        <page name='Combining'/>
+        <page name='Filters'/>
+        <page name='Operators'/>
+        <page name='Relay'/>
     </pages>
 </playground>

@@ -24,9 +24,9 @@ example(of: "map") {
         .map {
             formatter.string(from: $0) ?? ""
         }
-    .subscribe(onNext: {
-        print($0)
-    })
+        .subscribe(onNext: {
+            print($0)
+        })
         .disposed(by: dispose)
 }
 
@@ -43,8 +43,6 @@ example(of: "mapWithIndex") {
     })
     .disposed(by: dispose)
 }
-
-
 
 example(of: "flatMap") {
     

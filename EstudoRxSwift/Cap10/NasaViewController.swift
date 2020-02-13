@@ -25,10 +25,10 @@ class NasaViewController: UITableViewController {
                     self?.tableView?.reloadData()
                 }
             })
-                .disposed(by: disposeBag)
-                
-                startDownload()
-        }
+            .disposed(by: disposeBag)
+        
+        startDownload()
+    }
     
     func startDownload() {
         
@@ -39,7 +39,6 @@ class NasaViewController: UITableViewController {
                 EONET.events(forLast: 360, category: category)
             })
         }.merge()
-        
         
         let updatedCategories = eoCategories.flatMap { categories in
             downloadedEvents.scan(categories) { updated, events in
@@ -52,6 +51,7 @@ class NasaViewController: UITableViewController {
                         cat.events = cat.events + eventsForCategory
                         return cat
                     }
+                    
                     return category
                 }
             }
@@ -83,12 +83,16 @@ class NasaViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = categories.value[indexPath.row]
+        
         if !category.events.isEmpty {
+            
             let eventsController = storyboard!.instantiateViewController(withIdentifier: "events") as! EventsViewController
             eventsController.title = category.name
             eventsController.events.accept(category.events)
             navigationController!.pushViewController(eventsController, animated:
-                true) }
+                true)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
