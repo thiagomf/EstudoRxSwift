@@ -262,10 +262,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hks-um-SEv">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="dV6-oe-1oh" firstAttribute="top" secondItem="eZS-7f-vna" secondAttribute="bottom" constant="20" id="5DX-nA-Dn6"/>
+                            <constraint firstItem="hks-um-SEv" firstAttribute="centerY" secondItem="ykd-k8-zUb" secondAttribute="centerY" id="Gk0-ls-ns1"/>
                             <constraint firstItem="eZS-7f-vna" firstAttribute="leading" secondItem="ykd-k8-zUb" secondAttribute="leading" constant="58" id="IDN-cU-wyC"/>
                             <constraint firstItem="fZ7-KL-N0Q" firstAttribute="top" secondItem="dV6-oe-1oh" secondAttribute="bottom" constant="10" id="Uw8-KA-qxD"/>
                             <constraint firstItem="fZ7-KL-N0Q" firstAttribute="leading" secondItem="dV6-oe-1oh" secondAttribute="leading" id="XYH-wB-P1U"/>
@@ -273,6 +277,7 @@
                             <constraint firstItem="ykd-k8-zUb" firstAttribute="trailing" secondItem="eZS-7f-vna" secondAttribute="trailing" constant="58" id="eg9-Ve-zLw"/>
                             <constraint firstItem="eZS-7f-vna" firstAttribute="top" secondItem="ykd-k8-zUb" secondAttribute="top" constant="80" id="gq7-GD-QTb"/>
                             <constraint firstItem="dV6-oe-1oh" firstAttribute="leading" secondItem="eZS-7f-vna" secondAttribute="leading" id="kDi-uB-jWC"/>
+                            <constraint firstItem="hks-um-SEv" firstAttribute="centerX" secondItem="ykd-k8-zUb" secondAttribute="centerX" id="phM-Xw-nN2"/>
                             <constraint firstItem="dV6-oe-1oh" firstAttribute="trailing" secondItem="eZS-7f-vna" secondAttribute="trailing" id="xxe-pk-bYk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ykd-k8-zUb"/>
@@ -280,6 +285,7 @@
                     <connections>
                         <outlet property="cityTxt" destination="eZS-7f-vna" id="tgl-h9-zIt"/>
                         <outlet property="humiLb" destination="fZ7-KL-N0Q" id="bRO-JQ-vdj"/>
+                        <outlet property="load" destination="hks-um-SEv" id="fOi-ca-wPK"/>
                         <outlet property="tempLb" destination="dV6-oe-1oh" id="QD2-Kr-ptB"/>
                     </connections>
                 </viewController>

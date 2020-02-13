@@ -18,19 +18,51 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var humiLb: UILabel!
     
+    @IBOutlet weak var load: UIActivityIndicatorView!
+    
      let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let search = cityTxt.rx.controlEvent(.editingDidEndOnExit)
+        let searchInput = cityTxt.rx.controlEvent(.editingDidEndOnExit)
             .map { self.cityTxt.text ?? "" }
-            .flatMapLatest { cityTxt in
+            .filter { $0.count > 0 }
+        
+        let search = searchInput.flatMapLatest { cityTxt in
                 
-                return ApiController.shared.currentWeather(city: cityTxt)
+            return ApiController.shared.currentWeather(city: cityTxt)
         }
         .observeOn(MainScheduler.instance)
-        .asDriver(onErrorJustReturn: Weather.empty)
+        .asDriver(onErrorJustReturn: Weather.dummy)
+        
+        let running = Observable.merge(
+                        searchInput.map { _ in true},
+                        search.map { _ in false}.asObservable())
+                    .startWith(true)
+                    .asDriver(onErrorJustReturn: false)
+        
+        running
+            .skip(1)
+            .drive(load.rx.isAnimating)
+            .disposed(by: bag)
+        
+        running
+            .drive(tempLb.rx.isHidden)
+            .disposed(by: bag)
+        
+        running
+            .drive(humiLb.rx.isHidden)
+            .disposed(by: bag)
+        
+//        let search = cityTxt.rx.controlEvent(.editingDidEndOnExit)
+//        .map { self.cityTxt.text ?? "" }
+//        .flatMapLatest { cityTxt in
+//
+//            return ApiController.shared.currentWeather(city: cityTxt)
+//        }
+//        .observeOn(MainScheduler.instance)
+//        .asDriver(onErrorJustReturn: Weather.dummy)
 //        .subscribe(onNext: { value in
 //            self.cityTxt.text = value.cityName
 //            self.tempLb.text = "\(value.temperature)° C"
