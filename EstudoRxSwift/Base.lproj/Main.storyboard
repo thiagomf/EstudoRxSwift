@@ -263,29 +263,59 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hks-um-SEv">
-                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                                <rect key="frame" x="197" y="257" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWJ-EH-x2A">
+                                <rect key="frame" x="58" y="297" width="298" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ULs-lV-WjP"/>
+                                </constraints>
+                                <state key="normal" title="Location"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx6-Ra-DRh">
+                                <rect key="frame" x="58" y="382" width="298" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3KG-J0-uyy"/>
+                                </constraints>
+                                <state key="normal" title="MapKit"/>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="shJ-yP-zrx">
+                                <rect key="frame" x="0.0" y="452" width="414" height="410"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="dV6-oe-1oh" firstAttribute="top" secondItem="eZS-7f-vna" secondAttribute="bottom" constant="20" id="5DX-nA-Dn6"/>
-                            <constraint firstItem="hks-um-SEv" firstAttribute="centerY" secondItem="ykd-k8-zUb" secondAttribute="centerY" id="Gk0-ls-ns1"/>
+                            <constraint firstItem="Lx6-Ra-DRh" firstAttribute="trailing" secondItem="aWJ-EH-x2A" secondAttribute="trailing" id="HsK-du-fo4"/>
                             <constraint firstItem="eZS-7f-vna" firstAttribute="leading" secondItem="ykd-k8-zUb" secondAttribute="leading" constant="58" id="IDN-cU-wyC"/>
+                            <constraint firstItem="shJ-yP-zrx" firstAttribute="leading" secondItem="ykd-k8-zUb" secondAttribute="leading" id="PDd-FA-i4w"/>
                             <constraint firstItem="fZ7-KL-N0Q" firstAttribute="top" secondItem="dV6-oe-1oh" secondAttribute="bottom" constant="10" id="Uw8-KA-qxD"/>
                             <constraint firstItem="fZ7-KL-N0Q" firstAttribute="leading" secondItem="dV6-oe-1oh" secondAttribute="leading" id="XYH-wB-P1U"/>
                             <constraint firstItem="fZ7-KL-N0Q" firstAttribute="trailing" secondItem="dV6-oe-1oh" secondAttribute="trailing" id="YHc-Rf-O4H"/>
+                            <constraint firstItem="Lx6-Ra-DRh" firstAttribute="top" secondItem="aWJ-EH-x2A" secondAttribute="bottom" constant="35" id="avh-E2-WKQ"/>
+                            <constraint firstItem="aWJ-EH-x2A" firstAttribute="top" secondItem="hks-um-SEv" secondAttribute="bottom" constant="20" id="csK-gb-Mt8"/>
                             <constraint firstItem="ykd-k8-zUb" firstAttribute="trailing" secondItem="eZS-7f-vna" secondAttribute="trailing" constant="58" id="eg9-Ve-zLw"/>
+                            <constraint firstItem="shJ-yP-zrx" firstAttribute="top" secondItem="Lx6-Ra-DRh" secondAttribute="bottom" constant="20" id="fHn-5Y-rBN"/>
                             <constraint firstItem="eZS-7f-vna" firstAttribute="top" secondItem="ykd-k8-zUb" secondAttribute="top" constant="80" id="gq7-GD-QTb"/>
+                            <constraint firstItem="ykd-k8-zUb" firstAttribute="trailing" secondItem="shJ-yP-zrx" secondAttribute="trailing" id="jJb-ah-50e"/>
                             <constraint firstItem="dV6-oe-1oh" firstAttribute="leading" secondItem="eZS-7f-vna" secondAttribute="leading" id="kDi-uB-jWC"/>
-                            <constraint firstItem="hks-um-SEv" firstAttribute="centerX" secondItem="ykd-k8-zUb" secondAttribute="centerX" id="phM-Xw-nN2"/>
+                            <constraint firstItem="hks-um-SEv" firstAttribute="top" secondItem="fZ7-KL-N0Q" secondAttribute="bottom" constant="10" id="nza-ZL-bVI"/>
+                            <constraint firstItem="aWJ-EH-x2A" firstAttribute="leading" secondItem="fZ7-KL-N0Q" secondAttribute="leading" id="oHB-dg-IQD"/>
+                            <constraint firstItem="hks-um-SEv" firstAttribute="centerX" secondItem="ykd-k8-zUb" secondAttribute="centerX" id="oLc-JO-sUs"/>
+                            <constraint firstItem="ykd-k8-zUb" firstAttribute="bottom" secondItem="shJ-yP-zrx" secondAttribute="bottom" id="v2p-W8-Ktb"/>
+                            <constraint firstItem="Lx6-Ra-DRh" firstAttribute="leading" secondItem="aWJ-EH-x2A" secondAttribute="leading" id="xDG-Ln-KY8"/>
+                            <constraint firstItem="aWJ-EH-x2A" firstAttribute="trailing" secondItem="fZ7-KL-N0Q" secondAttribute="trailing" id="xiX-ZJ-A2Q"/>
                             <constraint firstItem="dV6-oe-1oh" firstAttribute="trailing" secondItem="eZS-7f-vna" secondAttribute="trailing" id="xxe-pk-bYk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ykd-k8-zUb"/>
                     </view>
                     <connections>
                         <outlet property="cityTxt" destination="eZS-7f-vna" id="tgl-h9-zIt"/>
+                        <outlet property="geoLocation" destination="aWJ-EH-x2A" id="XBh-yk-V6j"/>
                         <outlet property="humiLb" destination="fZ7-KL-N0Q" id="bRO-JQ-vdj"/>
                         <outlet property="load" destination="hks-um-SEv" id="fOi-ca-wPK"/>
+                        <outlet property="mapKitBtn" destination="Lx6-Ra-DRh" id="XgS-nn-0yD"/>
+                        <outlet property="mapView" destination="shJ-yP-zrx" id="NVx-oG-Tpb"/>
                         <outlet property="tempLb" destination="dV6-oe-1oh" id="QD2-Kr-ptB"/>
                     </connections>
                 </viewController>

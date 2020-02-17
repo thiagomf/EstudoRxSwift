@@ -39,6 +39,10 @@
 			</array>
 		</dict>
 	</dict>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Para usar este recurso é preciso autorizar o gps</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Para usar este recurso é preciso autorizar o gps</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
