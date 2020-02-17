@@ -1,4 +1,4 @@
-framework module Pods_EstudoRxSwift {
+module Pods_EstudoRxSwift {
   umbrella header "Pods-EstudoRxSwift-umbrella.h"
 
   export *

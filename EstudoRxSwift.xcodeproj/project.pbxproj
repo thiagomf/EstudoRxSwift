@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F92DE004B6227F764A6E2DE /* Pods_EstudoRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3639A6D21554803524B0C0F6 /* Pods_EstudoRxSwift.framework */; };
+		164FE864D950B5249411CC3C /* libPods-EstudoRxSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D252CF97186F0B9461DFC4A /* libPods-EstudoRxSwift.a */; };
 		8676F79F23DE1DDB00E3DBB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8676F79E23DE1DDB00E3DBB6 /* AppDelegate.swift */; };
 		8676F7A123DE1DDB00E3DBB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8676F7A023DE1DDB00E3DBB6 /* SceneDelegate.swift */; };
 		8676F7A323DE1DDB00E3DBB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8676F7A223DE1DDB00E3DBB6 /* ViewController.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3639A6D21554803524B0C0F6 /* Pods_EstudoRxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EstudoRxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D252CF97186F0B9461DFC4A /* libPods-EstudoRxSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EstudoRxSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F47ED2C9F4F65372283DDF0 /* Pods-EstudoRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstudoRxSwift.release.xcconfig"; path = "Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 		863713EB23DE3963003786D8 /* EstudoRXSwift.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EstudoRXSwift.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8676F79B23DE1DDB00E3DBB6 /* EstudoRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstudoRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +48,7 @@
 		86B865B023EC762B008E7720 /* EOEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOEvent.swift; sourceTree = "<group>"; };
 		86B865B223EC7654008E7720 /* EOLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOLocation.swift; sourceTree = "<group>"; };
 		88D4B4B5D53BC5BA74CE52D1 /* Pods-EstudoRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstudoRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		A53891F723FB229900906954 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54B737E23DF120700EAE36A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		A5533C2D23F1EAEE00DEBFD4 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		A57F784623F48C2A0038281E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -64,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F92DE004B6227F764A6E2DE /* Pods_EstudoRxSwift.framework in Frameworks */,
+				164FE864D950B5249411CC3C /* libPods-EstudoRxSwift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +138,8 @@
 		AE2DB48CC5BA83F9D544B849 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3639A6D21554803524B0C0F6 /* Pods_EstudoRxSwift.framework */,
+				A53891F723FB229900906954 /* RxCocoa.framework */,
+				4D252CF97186F0B9461DFC4A /* libPods-EstudoRxSwift.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,7 +164,6 @@
 				8676F79723DE1DDB00E3DBB6 /* Sources */,
 				8676F79823DE1DDB00E3DBB6 /* Frameworks */,
 				8676F79923DE1DDB00E3DBB6 /* Resources */,
-				EE4FF498D0D03C17C84E7702 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,23 +242,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EE4FF498D0D03C17C84E7702 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EstudoRxSwift/Pods-EstudoRxSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
