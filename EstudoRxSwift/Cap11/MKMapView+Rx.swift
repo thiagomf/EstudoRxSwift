@@ -46,6 +46,16 @@ extension Reactive where Base: MKMapView {
         }
     }
     
+    var regionDidChangedAnimated: ControlEvent<Bool> {
+        let source = delegate.methodInvoked(#selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:)))
+            .map { parameters in
+                
+                return (parameters[1] as? Bool) ?? false
+            }
+        
+        return ControlEvent(events: source)
+    }
+    
     func setDelegate(_ delegate: MKMapViewDelegate) -> Disposable {
         return RxMKMapViewDelegateProxy.installForwardDelegate(delegate,
                                                                retainDelegate: false,

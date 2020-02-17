@@ -81,6 +81,18 @@ class WeatherViewController: UIViewController {
                     .catchErrorJustReturn(.dummy)
         }
         
+        let mapInput = mapView.rx.regionDidChangedAnimated
+            .skip(1)
+            .map { [unowned self] _ in
+                self.mapView.centerCoordinate
+            }
+        
+        let mapSearch = mapInput.flatMap { location in
+            return ApiController.shared.currentWeather(lat: location.latitude,
+                                                       lon: location.longitude)
+                .catchErrorJustReturn(Weather.dummy)
+        }
+        
         let lastLocation = locationManager.rx.didUpdateLocations
             .map { locations in locations[0] }
             .filter { locations in
@@ -99,15 +111,20 @@ class WeatherViewController: UIViewController {
             
         }
         
-        let search = Observable.merge(geoSearch, searchText)
+        let search = Observable.merge(geoSearch, searchText, mapSearch)
                         .asDriver(onErrorJustReturn: .dummy)
-        
+                        
         let running = Observable.merge(
-                        searchInput.map { _ in true},
-                        geoInput.map { _ in true},
+                        searchInput.map { _ in true },
+                        geoInput.map { _ in true },
+                        mapInput.map { _ in true },
                         search.map { _ in false}.asObservable())
                     .startWith(true)
                     .asDriver(onErrorJustReturn: false)
+        
+//        search.map { [$0. ] }
+//            .drive(mapView.rx.overlays)
+//            .disposed(by: bag)
         
         running
             .skip(1)
