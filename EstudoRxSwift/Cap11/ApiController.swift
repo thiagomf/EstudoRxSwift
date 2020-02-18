@@ -15,7 +15,7 @@ import CoreLocation
 class ApiController {
 
     static var shared = ApiController()
-    private let apiKey = "c1e6fcabec0b590f51f83a6b8744cce3"
+    let apiKey = "c1e6fcabec0b590f51f83a6b8744cce3"
     let baseURL = URL(string: "http://api.openweathermap.org/data/2.5")!
     
     func currentWeatherDumb(city: String) -> Observable<Weather> {

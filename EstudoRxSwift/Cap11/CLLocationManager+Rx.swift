@@ -31,7 +31,6 @@ class RxCLLocationManagerDelegateProxy: DelegateProxy<CLLocationManager, CLLocat
     static func registerKnownImplementations() {
         self.register { RxCLLocationManagerDelegateProxy(locationManager: $0) }
     }
-    
    
 }
 

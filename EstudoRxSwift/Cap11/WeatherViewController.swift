@@ -28,7 +28,9 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-     let bag = DisposeBag()
+    private var cache = [String: Weather]()
+    
+    let bag = DisposeBag()
     
     private let locationManager = CLLocationManager()
     
@@ -78,7 +80,16 @@ class WeatherViewController: UIViewController {
         let searchText = searchInput.flatMap { text in
             
             return ApiController.shared.currentWeather(city: text)
-                    .catchErrorJustReturn(.dummy)
+                .do(onNext: { data in
+                    self.cache[text] = data
+                })
+                .retry(3)
+                .catchError { error in
+                    guard let cached = self.cache[text] else {
+                        return Observable.just(.empty)
+                    }
+                    return Observable.just(cached)
+            }
         }
         
         let mapInput = mapView.rx.regionDidChangedAnimated
@@ -107,7 +118,7 @@ class WeatherViewController: UIViewController {
             
             return ApiController.shared.currentWeather(lat: location.coordinate.latitude,
                                                        lon: location.coordinate.longitude)
-                                                        .catchErrorJustReturn(Weather.dummy)
+                .catchErrorJustReturn(Weather.dummy)
             
         }
         
