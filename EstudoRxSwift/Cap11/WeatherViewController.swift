@@ -34,8 +34,28 @@ class WeatherViewController: UIViewController {
     
     private let locationManager = CLLocationManager()
     
+    var keyTextField: UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let maxAttempts = 4
+        
+        let retryHandler: (Observable<Error>) -> Observable<Int> = { e in
+            return e.enumerated().flatMap { attempt, error -> Observable<Int> in
+                
+                if attempt >= maxAttempts - 1 { return Observable.error(error)
+                } else
+                    if let casted = error as? ApiController.ApiError, casted == .invalidKey {
+                        return ApiController.shared.apiKey
+                            .filter { !$0.isEmpty }
+                            .map { _ in 1 }
+                }
+                print("== retrying after \(attempt + 1) seconds ==")
+                return Observable<Int>.timer(Double(attempt + 1),
+                                             scheduler: MainScheduler.instance) .take(1)
+            }
+        }
         
         let searchInput = cityTxt.rx.controlEvent(.editingDidEndOnExit)
             .map { self.cityTxt.text ?? "" }
@@ -82,15 +102,33 @@ class WeatherViewController: UIViewController {
             return ApiController.shared.currentWeather(city: text)
                 .do(onNext: { data in
                     self.cache[text] = data
+                }, onError: { e in
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.showError(error: e)
+                    }
                 })
-                .retry(3)
+            .retryWhen(retryHandler)
+//                .retry(3)
+//                .retryWhen { e in
+//                    return e.enumerated().flatMap { attempt, error -> Observable<Int> in
+//                        if attempt >= maxAttempts - 1 {
+//                            return Observable.error(error)
+//                        }
+//                        print("== retrying after \(attempt + 1) seconds ==")
+//
+//                        return Observable<Int>.timer(Double(attempt + 1),
+//                                                     scheduler: MainScheduler.instance)
+//                                                    .take(1)
+//                    }
+//                }
                 .catchError { error in
                     guard let cached = self.cache[text] else {
                         return Observable.just(.empty)
                     }
                     return Observable.just(cached)
+                }
             }
-        }
         
         let mapInput = mapView.rx.regionDidChangedAnimated
             .skip(1)
@@ -162,6 +200,58 @@ class WeatherViewController: UIViewController {
             .drive(humiLb.rx.text)
             .disposed(by: bag)
     }
+    
+    private func showError(error e: Error) {
+        
+        var alert = UIAlertController(title: "server ERROR", message: "An error occurred", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+        
+        guard let e = e as? ApiController.ApiError else {
+            
+            self.present(alert, animated: true)
+            return
+        }
+        
+        switch e {
+            case .cityNotFound:
+                alert = UIAlertController(title: "server ERROR", message: "City not found", preferredStyle: .alert)
+            case .serverFailure:
+                alert = UIAlertController(title: "ERROR", message: "Server Error", preferredStyle: .alert)
+            case .invalidKey:
+                alert = UIAlertController(title: "Key", message: "The key is invalid", preferredStyle: .alert)
+        }
+        
+        alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func requestKey() {
+
+       func configurationTextField(textField: UITextField!) {
+         self.keyTextField = textField
+       }
+
+       let alert = UIAlertController(title: "Api Key",
+                                     message: "Add the api key:",
+                                     preferredStyle: UIAlertController.Style.alert)
+
+       alert.addTextField(configurationHandler: configurationTextField)
+
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler:{ (UIAlertAction) in
+         ApiController.shared.apiKey.onNext(self.keyTextField?.text ?? "")
+       }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive))
+
+       self.present(alert, animated: true)
+     }
+    
+    @IBAction func openKeyEdit(_ sender: Any) {
+        
+        requestKey()
+        
+    }
+    
 }
 
 extension WeatherViewController: MKMapViewDelegate {

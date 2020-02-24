@@ -14,8 +14,15 @@ import CoreLocation
 
 class ApiController {
 
+    enum ApiError: Error {
+
+        case cityNotFound
+        case serverFailure
+        case invalidKey
+    }
+
     static var shared = ApiController()
-    let apiKey = "c1e6fcabec0b590f51f83a6b8744cce3"
+    let apiKey = BehaviorSubject(value: "")
     let baseURL = URL(string: "http://api.openweathermap.org/data/2.5")!
     
     func currentWeatherDumb(city: String) -> Observable<Weather> {
@@ -66,7 +73,7 @@ class ApiController {
 
       let url = baseURL.appendingPathComponent(pathComponent)
       var request = URLRequest(url: url)
-      let keyQueryItem = URLQueryItem(name: "appid", value: apiKey)
+        let keyQueryItem = URLQueryItem(name: "appid", value: try? self.apiKey.value())
       let unitsQueryItem = URLQueryItem(name: "units", value: "metric")
       let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
 
@@ -88,6 +95,17 @@ class ApiController {
 
       let session = URLSession.shared
 
-      return session.rx.data(request: request).map { try JSON(data: $0) }
+        return session.rx.response(request: request).map() { response, data in
+            switch response.statusCode {
+            case 200 ..< 300:
+                return try JSON(data: data)
+            case 401:
+                throw ApiError.invalidKey
+            case 400 ..< 500:
+                throw ApiError.cityNotFound
+            default:
+                throw ApiError.serverFailure
+            }
+        }
     }
 }
