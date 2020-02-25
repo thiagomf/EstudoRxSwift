@@ -28,6 +28,8 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var keyButton: UIButton!
+    
     private var cache = [String: Weather]()
     
     let bag = DisposeBag()
@@ -199,6 +201,10 @@ class WeatherViewController: UIViewController {
         search.map { "\($0.humidity) %" }
             .drive(humiLb.rx.text)
             .disposed(by: bag)
+      
+        keyButton.rx.tap.subscribe(onNext: {
+            self.requestKey()
+        }).disposed(by: bag)
     }
     
     private func showError(error e: Error) {
@@ -245,12 +251,6 @@ class WeatherViewController: UIViewController {
 
        self.present(alert, animated: true)
      }
-    
-    @IBAction func openKeyEdit(_ sender: Any) {
-        
-        requestKey()
-        
-    }
     
 }
 

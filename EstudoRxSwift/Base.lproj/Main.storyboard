@@ -285,9 +285,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFc-VC-cVU">
                                 <rect key="frame" x="58" y="86" width="298" height="30"/>
                                 <state key="normal" title="key"/>
-                                <connections>
-                                    <action selector="openKeyEdit:" destination="Xhv-rB-f87" eventType="touchUpInside" id="h8e-ac-lTB"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -323,6 +320,7 @@
                         <outlet property="cityTxt" destination="eZS-7f-vna" id="tgl-h9-zIt"/>
                         <outlet property="geoLocation" destination="aWJ-EH-x2A" id="XBh-yk-V6j"/>
                         <outlet property="humiLb" destination="fZ7-KL-N0Q" id="bRO-JQ-vdj"/>
+                        <outlet property="keyButton" destination="mFc-VC-cVU" id="gek-Kt-sJY"/>
                         <outlet property="load" destination="hks-um-SEv" id="fOi-ca-wPK"/>
                         <outlet property="mapKitBtn" destination="Lx6-Ra-DRh" id="XgS-nn-0yD"/>
                         <outlet property="mapView" destination="shJ-yP-zrx" id="NVx-oG-Tpb"/>
