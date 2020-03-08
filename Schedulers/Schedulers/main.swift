@@ -17,13 +17,12 @@ let globalScheduler = ConcurrentDispatchQueueScheduler(queue: DispatchQueue.glob
 let bag = DisposeBag()
 let animal = BehaviorSubject(value: "[dog]")
 
-
 animal
-  .subscribeOn(MainScheduler.instance)
-  .dump()
-  .observeOn(globalScheduler)
-  .dumpingSubscription()
-  .disposed(by: bag)
+    .subscribeOn(MainScheduler.instance)
+    .dump()
+    .observeOn(globalScheduler)
+    .dumpingSubscription()
+    .disposed(by:bag)
 
 let fruit = Observable<String>.create { (observer) in
   observer.onNext("[apple]")
